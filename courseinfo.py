@@ -126,6 +126,50 @@ def filter_data(filename):
 
       for words in data:
         writer.writerow(words)
+
+def string_data(filename):
+
+  with open(filename, newline='') as csvfile:
+
+    # read in course data
+    csvreader = csv.reader(csvfile)
+
+    header = next(csvreader)
+    # row = next(csvreader)
+    # data = []
+    # res = ''
+    # for word in row:
+    #   res += word + ' '
+    # data.append([res])
+    
+
+    # with open('stringcourse.csv', 'w', newline='') as file:
+    #   writer = csv.writer(file)
+     
+    #   writer.writerow([""])
+
+    #   for words in data:
+    #     writer.writerow(words)
+
+
+    data = []
+    for row in csvreader:
+      res = ''
+
+      for word in row:
+        res += word + ' '
+      
+        
+      data.append([res])
+
+
+    with open('stringcourse.csv', 'w', newline='') as file:
+      writer = csv.writer(file)
+     
+      writer.writerow([""])
+
+      for words in data:
+        writer.writerow(words)
      
 
 
@@ -146,7 +190,8 @@ def filter_data(filename):
 
 # get_data()
 
-filter_data('coursedata.csv')
+#filter_data('coursedata.csv')
+string_data('filtercourse.csv')
 
 
 

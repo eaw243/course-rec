@@ -3,6 +3,6 @@ import pandas as pd
 
 # Data Formatting
 # Filtered dataset
-filtered = pd.read_csv('./filtercourse.csv',  sep=',',  header=0)
+filtered = pd.read_csv('./stringcourse.csv',  sep=',',  header=0)
 
 print(filtered)
