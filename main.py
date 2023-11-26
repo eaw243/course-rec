@@ -46,6 +46,7 @@ user_tfidf = tfidf_vectorizer.transform(xTe['text'])
 cos_similarity_tfidf = map(
     lambda x: cosine_similarity(user_tfidf, x), tfidf_desc)
 n_neighbors = 5
+
 # print(user_tfidf)
 KNN = NearestNeighbors(n_neighbors=n_neighbors, p=2)
 KNN.fit(tfidf_desc)
