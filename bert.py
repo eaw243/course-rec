@@ -104,7 +104,9 @@ def get_top_matches(input_description, reference_descriptions, k=5):
     similarities = cosine_similarity(
         [input_embedding], reference_descriptions)[0]
 
-    top_indices = similarities.argsort()[-k:][::-1]
+    # top_indices = similarities.argsort()[-k:][::-1]
+
+    top_indices = similarities.argsort()[:][::-1]
 
     top_matches = [(course_descriptions[i], similarities[i])
                    for i in top_indices]

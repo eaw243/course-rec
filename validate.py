@@ -21,6 +21,7 @@ def hit_rate(data, k=5):
     for i in range(len(top_k)):
       top_k[i] = top_k[i].replace(' ', '').replace('[', '').replace(']','').replace("'", '')
 
+    print(top_k)
     if course[4].lower().replace(' ','') in top_k:
       score += 1
   
@@ -58,7 +59,8 @@ def mae(data):
 
   print('Mean Absolute Error: ' + str(sum / num_courses))
 
-data = read_model('knn.csv')
+# data = read_model('knn.csv')
+data = read_model('BERT.csv')
 hit_rate(data, 5)
-rmse(data)
-mae(data)
+#rmse(data)
+#mae(data)
