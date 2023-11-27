@@ -146,3 +146,7 @@ for index, row in res.iterrows():
 
 res['Top 5'] = titles
 res['Similarities'] = sims
+
+csv_file_path = '/bert.csv'
+
+res.to_csv(csv_file_path, index=False)
