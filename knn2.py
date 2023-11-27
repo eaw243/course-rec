@@ -57,7 +57,7 @@ def knn_top_matches(filtered, test):
 
     titles = filtered['title'].values 
 
-    similarities = cosine_similarity(input_vector, trainset_tfidf[top_indices]).flatten()
+    similarities = cosine_similarity(input_vector, trainset_tfidf[top_indices.flatten()]).flatten()
 
     top_matches = [(titles[i], similarities[j]) for j, i in enumerate(top_indices.flatten())]
     top_matches.sort(key=lambda x: x[1], reverse=True)
