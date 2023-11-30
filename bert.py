@@ -150,3 +150,9 @@ res['Similarities'] = sims
 csv_file_path = '/bert.csv'
 
 res.to_csv(csv_file_path, index=False)
+
+# num_epochs = 1
+# batch_size = 16
+# lr = 0.01 in bert2.csv, 0.001 in bert2-001.csv
+
+#epoch, batch, lr
