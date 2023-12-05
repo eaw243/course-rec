@@ -21,61 +21,20 @@ def prep():
     filtered.columns = ['text', 'ID', 'title']
     return filtered
 
-# BERT model, no SGD for training (which is why this failed)
-def bert(filtered, n, xTe):
-    # initialize list of top_n
-    top_n = []
-    # For each Duke description
-    for test in xTe:
-        # Create a tokenizer
-        tokenizer = DistilBertTokenizer.from_pretrained(
-            'distilbert-base-uncased')
-        # Make a list of training descriptions
-        texts = filtered['text'].tolist()
-        # Encode this list of training points
-        encoded_inputs = tokenizer(
-            texts, return_tensors='pt', padding=True, truncation=True, max_length=2000)
-        # Encode the test description
-        encoded_test_input = tokenizer(
-            test, return_tensors='pt', padding=True, truncation=True, max_length=128)
-        # Initialize a model
-        model = DistilBertModel.from_pretrained("distilbert-base-uncased")
-
-        # Evaluate this model on our training points
-        with torch.no_grad():
-            outputs = model(**encoded_inputs)
-            embeddings = outputs.last_hidden_state
-
-        # Evaluate these on our test points
-        with torch.no_grad():
-            test_output = model(**encoded_test_input)
-            test_embedding = test_output.last_hidden_state.mean(dim=1)
-        # Find the similarity matrix of the embeddings
-        similarity_matrix = cosine_similarity(
-            test_embedding.detach().numpy(), embeddings.detach().numpy())
-        
-        # Get our nearest neighbors based on test embeddings
-        n_nearest = similarity_matrix.argsort()[0][-n:][::-1]
-
-        # Get a list of titles for the nearest embeddings
-        titles = filtered['title'].tolist()
-
-        # Add that to our list
-        top_n += [titles[i] for i in n_nearest]
-
-    return top_n
-# This returned the exact same as KNN 
-
-
 bert_top_n = []
 knn_top_n = []
 
+# Initialize model
 model = DistilBertModel.from_pretrained('distilbert-base-uncased')
+# Initialize tokenizer
 tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
+# Create Cornell dataframe
 filtered = prep()
+# Get a list of training descriptions
 course_descriptions = filtered['text'].tolist()
 
 description_embeddings = []
+# Tokenize each description (we use the last layer as our embedding)
 for description in course_descriptions:
     inputs = tokenizer(description, return_tensors="pt", truncation=True)
     outputs = model(**inputs)
@@ -83,20 +42,21 @@ for description in course_descriptions:
         dim=1).squeeze().detach().numpy()
     description_embeddings.append(embeddings)
 
-
+# Find the best matches for an input description
 def get_top_matches(input_description, reference_descriptions, k=5):
+    #  Embed our input_description
     input_embedding = get_embedding(input_description)
-
+    # Create similarity matrix
     similarities = cosine_similarity(
         [input_embedding], reference_descriptions)[0]
-
+    # Return most similar descriptions from train set
     top_indices = similarities.argsort()[:][::-1]
 
     top_matches = [(course_descriptions[i], similarities[i])
                    for i in top_indices]
     return top_matches
 
-
+# Embed description using our BERT model
 def get_embedding(description):
     inputs = tokenizer(description, return_tensors="pt", truncation=True)
     outputs = model(**inputs)
@@ -144,3 +104,4 @@ csv_file_path = '/bert.csv'
 res.to_csv(csv_file_path, index=False)
 
 # Data in bert.csv : this is identical to the knn results
+# This returned the exact same as KNN 
