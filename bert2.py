@@ -48,6 +48,7 @@ num_classes = 1954
 tokenizer = DistilBertTokenizer.from_pretrained('distilbert-base-uncased')
 # Tokenize our training set
 tokenized_inputs = tokenizer(texts, padding=True, truncation=True, return_tensors='pt', max_length=64)
+# Make our labels accessible attached to the dataset
 dataset = list(zip(tokenized_inputs['input_ids'], tokenized_inputs['attention_mask'], labels))
 
 
@@ -63,11 +64,17 @@ def train(num_epochs, batch_size, learning_rate):
   loss_fn = torch.nn.CrossEntropyLoss()
   # Begin Training
   model.train()
+  # for each epoch
   for epoch in range(num_epochs):
+      # Get a dataloader that shuffles our data
       dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+      # For each batch in the dataloader
       for batch in dataloader:
+        # Get our inputs
         input_ids, attention_mask,batch_labels = batch
+        # Make the batch label 1d
         batch_labels = batch_labels.view(-1)
+        # Zero our gradient
         optimizer.zero_grad()
          # with autocast(device_type='cuda', dtype=torch.float16):
               # output = model(input)
@@ -77,28 +84,25 @@ def train(num_epochs, batch_size, learning_rate):
         print(batch_labels)
         print(outputs.logits.shape)
         print(batch_labels.shape)
+        # We are minimizing the cross entropy
         loss = torch.nn.functional.cross_entropy(outputs.logits, torch.tensor(batch_labels))
         print(loss)
         # Backpropagation
         loss.backward()
+        # Next step of SGD
         optimizer.step()
-  # Evaluation
-  #model.eval()
- #with torch.no_grad():
-      #outputs = model(**encoded_inputs)
-      #predictions = torch.argmax(outputs.logits, dim=1)
   # Inference
+  # Tokenize our Duke Descriptions
   new_inputs = tokenizer(new_texts, padding=True, truncation=True, return_tensors='pt')
+  # Begin evaluation
   model.eval()
   with torch.no_grad():
       outputs = model(**new_inputs)
-      predictions = torch.argmax(outputs.logits.float(), dim=1)
   # Rank the predictions
   all_preds = torch.argsort(outputs.logits, descending=True)
   # List of all Cornell class codes
   cornell_titles = cornell_df['title'].tolist()
-  # List of Cornell class codes corresponding to Duke classes
-  duke_titles = duke_df['Cornell Class Code']
+  # List of title predictions
   title_preds = []
   # For each Duke class
   for i in range(len(all_preds)):
@@ -117,17 +121,23 @@ def train(num_epochs, batch_size, learning_rate):
   return duke_df
 
 # Hyperparameter optimization
-#32, 64, 128
-batches = [16]
+# Grid search on batches, epochs, and learning rates
+batches = [16, 32, 64, 128]
 epochs = [1,2,3,4]
 lrs = [0.1, 0.01, 0.001, 0.0001]
 for batch in batches:
   for epoch in epochs:
     for lr in lrs:
+      # unique instance of batch, epoch, lr
+      # train our model
       duke_df=train(epoch, batch, lr)
       from google.colab import files
       print(batch)
+      # Create a csv path specifies the parameters
       csv_file_path = '/content/bert2-' + str(batch)  + ','+ str(epoch) +',' + str(lr) + '.csv'
+      # Make this a csv file
       duke_df.to_csv(csv_file_path, index=False)
+      # Download csv
       files.download(csv_file_path)
+      
 ## This is code for a colab notebook
