@@ -5,6 +5,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.neighbors import NearestNeighbors
 
+# Prepare our Cornell dataframe with column text (description), ID, title(e.g. CS4701)
 def prep():
     filtered = pd.read_csv('./stringcourse.csv',  sep=',',  header=0)
     filtered['ID'] = range(0, len(filtered))
@@ -14,7 +15,7 @@ def prep():
     filtered.columns = ['text', 'ID', 'title']
     return filtered
 
-
+# Separate our Duke data into descriptions and labels
 def validate():
   xTe = pd.DataFrame([], columns=['text'])
   yTe = []
@@ -31,20 +32,25 @@ def validate():
 
     return xTe, yTe
 
-
+# Res is our Duke dataframe
 res = pd.read_csv('./Duke Roster.csv',  sep=',',  header=0)
 res.columns = ['Duke Class Name', 'Duke Class Code',
                'Duke Description', 'Cornell Class Name', 'Cornell Class Code']
-
+# Initialize necessary lists
 top_matches = []
 titles = []
 sims = []
+# Make Cornell df
 filtered = prep()
+# Separate Duke data into descriptions and labels
 xTe, yTe = validate()
+# Create a Tfidf vectorizer
 vectorizer = TfidfVectorizer()
+# Vectorize our training data
 trainset_tfidf = vectorizer.fit_transform((filtered['text']))
 n_neighbors = 5
 
+# Returns the top k matches based on cosine similarity
 def knn_top_matches(filtered, test):
     input_vector = vectorizer.transform([test])
 
@@ -64,11 +70,11 @@ def knn_top_matches(filtered, test):
 
     return top_matches
 
-
+# Initialize lists
 top_matches = []
 titles = []
 sims = []
-
+# Gather top 5 similarities and top 5 titles of courses
 for index, row in res.iterrows():
     top_results = []
     similarities = []
@@ -85,8 +91,9 @@ for index, row in res.iterrows():
 res['Ranked Results'] = titles
 res['Similarities'] = sims
 
+# Create csv file path
 csv_file_path = './knn2.csv'
-
+# Make this a csv
 res.to_csv(csv_file_path, index=False)
 
 

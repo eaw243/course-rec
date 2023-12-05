@@ -3,7 +3,7 @@ import csv
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-
+# Prepare our Cornell dataframe with column text (description), ID, title(e.g. CS4701)
 def prep():
     filtered = pd.read_csv('./stringcourse.csv',  sep=',',  header=0)
     filtered['ID'] = range(0, len(filtered))
@@ -13,7 +13,7 @@ def prep():
     filtered.columns = ['text', 'ID', 'title']
     return filtered
 
-
+# Separate our Duke data into descriptions and labels
 def validate():
     xTe = pd.DataFrame([], columns=['text'])
     yTe = []
@@ -29,65 +29,38 @@ def validate():
                 yTe.append(row[4])
 
         return xTe, yTe
-
-
-def hit_rate(filtered, yTe, NNs):
-    score = 0
-    total = 0
-    for i in range(len(yTe)):
-        try:
-            id = filtered[filtered['title'] ==
-                          yTe[i].lower().replace(' ', '')]['ID'].iloc[0]
-
-            found = False
-            for course in NNs[1][i]:
-                if course == int(id):
-                    score += 1
-                    found = True
-                    break
-
-            if not found:
-                # print(yTe[i])
-                print([filtered['title'][NNs[1][i][0]], filtered['title'][NNs[1][i][1]], filtered['title']
-                      [NNs[1][i][2]], filtered['title'][NNs[1][i][3]], filtered['title'][NNs[1][i][4]]])
-
-        except:
-            total -= 1
-            pass
-
-        total += 1
-
-    return (str(score) + " out of " + str(total))
-
-
+# Res is our Duke dataframe
 res = pd.read_csv('./Duke Roster.csv',  sep=',',  header=0)
 res.columns = ['Duke Class Name', 'Duke Class Code',
                'Duke Description', 'Cornell Class Name', 'Cornell Class Code']
-
+# Initialize necessary lists
 top_matches = []
 titles = []
 sims = []
+# Make Cornell df
 filtered = prep()
+# Separate Duke data into descriptions and labels
 xTe, yTe = validate()
+# Create a Tfidf vectorizer
 vectorizer = TfidfVectorizer()
+# Vectorize our training data
 trainset_tfidf = vectorizer.fit_transform((filtered['text']))
 
-
+# Returns the top k matches based on cosine similarity
 def knn_top_matches(filtered, k, test):
     input_vector = vectorizer.transform([test])
     titles = filtered['title']
     similarities = cosine_similarity(input_vector, trainset_tfidf).flatten()
-    # top_indices = similarities.argsort()[-k:][::-1]
     top_indices = similarities.argsort()[:][::-1]
     top_matches = [(titles[i], similarities[i])
                    for i in top_indices]
     return top_matches
 
-
+# Initialize lists
 top_matches = []
 titles = []
 sims = []
-
+# Gather top 5 similarities and top 5 titles of courses
 for index, row in res.iterrows():
     top_5 = []
     similarities = []
@@ -105,7 +78,7 @@ for index, row in res.iterrows():
 res['Top 5'] = titles
 res['Similarities'] = sims
 
-
+# Create csv file path
 csv_file_path = './knn.csv'
-
+# Make this a csv
 res.to_csv(csv_file_path, index=False)
