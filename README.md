@@ -29,7 +29,7 @@ not beginning. Data from this is in bert2 no training folder. Data after the bug
 fixed is in bert2 training folder. Data was reported with different hyperparameters in
 in order to optimize our hyperparameters for SGD (epochs, learning rate, and batch size).
 
-(4) bert3.py. This uses DistilBERT to tokenize our input. We then train a
+(5) bert3.py. This uses DistilBERT to tokenize our input. We then train a
 DistilBERT model to complete our task. This utilized the Trainer class from
 transformers. However, this code is still buggy. Output for the metrics
 from this data is in the trainer model folder.
