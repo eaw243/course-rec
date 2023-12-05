@@ -11,7 +11,6 @@ from sklearn.neighbors import KNeighborsClassifier
 from transformers import DistilBertModel, DistilBertTokenizer, DistilBertForSequenceClassification
 from torch.utils.data import DataLoader, TensorDataset
 # Creates a list of labels for the Duke testing data 
-
 def get_labels(cornell_df, duke_df):
     res = []
     for row in duke_df['Cornell Class Code']:
