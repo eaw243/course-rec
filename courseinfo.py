@@ -3,6 +3,9 @@ from urllib.request import urlopen
 import numpy as np
 import csv
 import sys
+from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+from sklearn.neighbors import NearestNeighbors
 
 def scrape_site(url):
 
@@ -172,7 +175,145 @@ def string_data(filename):
         writer.writerow(words)
      
 
+def get_2024_courses():
+  data = ['(ASRC)Agriculture', '&', 'Life', 'Sciences', '(ALS)Air', 'Force', 'Science', '(AIRS)American', 'Indian', '&', 'Indigenous', '(AIIS)American', 'Sign', 'Language', '(ASL)American', 'Studies', '(AMST)Animal', 'Physiology', '&', 'Anatomy', '(BIOAP)Animal', 'Science', '(ANSC)Anthropology', '(ANTHR)Applied', '&', 'Engineering', 'Physics', '(AEP)Applied', 'Economics', '&', 'Management', '(AEM)Arabic', '(ARAB)Archaeology', '(ARKEO)Architecture', '(ARCH)Art', '(ART)Art', 'History', '(ARTH)Arts', '&', 'Sciences', '(AS)Asian', 'American', 'Studies', '(AAS)Asian', 'Studies', '(ASIAN)Astronomy', '(ASTRO)Bengali', '(BENGL)Bio', 'Medical', 'Science', '(BIOMS)Biological', '&', 'Environmental', 'Eng', '(BEE)Biology', '&', 'Society', '(BSOC)Biology:', 'General', 'Courses', '(BIOG)Biomedical', 'Engineering', '(BME)Biometry', '&', 'Statistics', '(BTRY)Bosnian,', 'Croatian,', 'Serbian', '(BCS)Burmese', '(BURM)Business', 'Admin', 'Electives', 'EMBA', '(NBAE)Chemical', 'Engineering', '(CHEME)Chemistry', '(CHEM)China', '&', 'Asia', 'Pacific', 'Studies', '(CAPS)Chinese', '(CHIN)Chinese', 'Literature', '(CHLIT)City', '&', 'Regional', 'Planning', '(CRP)Civil', '&', 'Environmental', 'Engr', '(CEE)Classics', '(CLASS)Cognitive', 'Science', '(COGST)College', 'Scholar', 'Program', '(COLLS)Common', 'Core', 'Courses', 'EMBA', '(NCCE)Communication', '(COMM)Comparative', 'Literature', '(COML)Computational', 'Biology', '(BIOCB)Computer', 'Science', '(CS)Czech', '(CZECH)Design', '&', 'Environmental', 'Analy', '(DEA)Design', 'Tech', '(DESIGN)Digital', 'Tech', 'Interdisciplinary', '(TECHIE)Digital', 'Technology', '&', 'Practice', '(TECH)Dutch', '(DUTCH)Earth', '&', 'Atmospheric', 'Sciences', '(EAS)Ecology', '&', 'Evolutionary', 'Biology', '(BIOEE)Economics', '(ECON)Education', '(EDUC)Electrical', '&', 'Computer', 'Engr', '(ECE)Engineering', 'Communications', '(ENGRC)Engineering', 'Distribution', '(ENGRD)Engineering', 'General', 'Interest', '(ENGRG)Engineering', 'Introduction', '(ENGRI)Engineering', 'Management', '(ENMGT)English', '(ENGL)English', '(as', 'a', 'Foreign', 'Lang)', '(ENGLF)English', 'Language', 'Support', '(ELSO)Entomology', '(ENTOM)Environment', '&', 'Sustainability', '(ENVS)Executive', 'Boardroom', 'Core', '(NCCB)Executive', 'Boardroom', 'Electives', '(NBAB)Feminist,Gender,Sexuality', 'Stdy', '(FGSS)Fiber', 'Science', '&', 'Apparel', 'Design', '(FSAD)Finnish', '(FINN)Food', 'Science', '(FDSC)French', '(FREN)German', 'Studies', '(GERST)Global', 'Development', '(GDEV)Government', '(GOVT)Grad', 'Mgmt', 'Acct', '(NACCT)Grad', 'Mgmt', 'Business', 'Admin', '(NBA)Grad', 'Mgmt', 'Business', 'Admin', 'CT', '(NBAT)Grad', 'Mgmt', 'Business', 'Admin', 'NYT', '(NBAY)Grad', 'Mgmt', 'Business', 'Admin', 'Weill', '(NBAW)Grad', 'Mgmt', 'Business', 'Analytics', '(BANA)Grad', 'Mgmt', 'Common', 'Core', '(NCC)Grad', 'Mgmt', 'Common', 'Core', 'CT', '(NCCT)Grad', 'Mgmt', 'Common', 'Core', 'Weill', '(NCCW)Grad', 'Mgmt', 'Individual', 'Study', '(NMI)Graduate', 'Management', '(MGMT)Graduate', 'Management', 'Research', '(NRE)Graduate', 'Research', '(GRAD)Greek', '(GREEK)Hebrew', '(HEBRW)Hindi', '(HINDI)History', '(HIST)Horticulture', 'Sciences', '(PLHRT)Hotel', 'Administration', '(HADM)Human', 'Development', '(HD)Human', 'Ecology', 'Nondepartmental', '(HE)Hungarian', '(HUNGR)ILR', 'Human', 'Resource', 'Studies', '(ILRHR)ILR', 'Interdepartmental', '(ILRID)ILR', 'International', '&', 'Comp', 'Labor', '(ILRIC)ILR', 'Labor', 'Economics', '(ILRLE)ILR', 'Labor', 'Relations,', 'Law,', 'Hist', '(ILRLR)ILR', 'Organizational', 'Behavior', '(ILROB)ILR', 'Social', 'Statistics', '(ILRST)Independent', 'Major', '(IM)Indonesian', '(INDO)Information', 'Science', '(INFO)Italian', '(ITAL)Japanese', '(JAPAN)Japanese', 'Literature', '(JPLIT)Jewish', 'Studies', '(JWST)Kannada', '(KANAD)Khmer', '(KHMER)Korean', '(KOREA)Landscape', 'Architecture', '(LA)Latin', '(LATIN)Latin', 'American', 'Studies', '(LATA)Latino', 'Studies', 'Program', '(LSP)Law', '(LAW)Leadership', '(LEAD)Learning', 'Where', 'you', 'Live', '(UNILWYL)Legal', 'Studies', '(LEGAL)Lesbian,Gay,Bisexual,Trns', 'Stdy', '(LGBT)Linguistics', '(LING)Materials', 'Science', '&', 'Engr', '(MSE)Mathematics', '(MATH)Mechanical', '&', 'Aerospace', 'Eng', '(MAE)Medieval', 'Studies', '(MEDVL)Microbiology', '(BIOMI)Military', 'Science', '(MILS)Molecular', 'Biology', 'and', 'Genetics', '(BIOMG)Music', '(MUSIC)Natural', 'Resources', '(NTRES)Naval', 'Science', '(NAVS)Near', 'Eastern', 'Studies', '(NES)Nepali', '(NEPAL)Neurobiology', '&', 'Behavior', '(BIONB)Nutritional', 'Science', '(NS)Op', 'Research', '&', 'Information', 'Engr', '(ORIE)Overseas', 'Study', '(OVST)Performing', 'and', 'Media', 'Arts', '(PMA)Persian', '(PERSN)Philosophy', '(PHIL)Physical', 'Education', '&', 'Athletics', '(PE)Physics', '(PHYS)Plant', 'Biology', '(PLBIO)Plant', 'Breeding', '(PLBRG)Plant', 'Pathology', '(PLPPM)Plant', 'Sciences', '(PLSCI)Polish', '(POLSH)Population', 'Med&Diagnostic', 'Svc', '(VTPMD)Portuguese', '(PORT)Psychology', '(PSYCH)Public', 'Administration', '(PADM)Public', 'Policy', '(PUBPOL)Punjabi', '(PUNJB)Real', 'Estate', '(REAL)Religious', 'Studies', '(RELST)Romance', 'Studies', '(ROMS)Romanian', '(ROMAN)Russian', '(RUSSA)Russian', 'Literature', '(RUSSL)Sanskrit', '(SANSK)Science', '&', 'Technology', 'Studies', '(STS)Sinhalese', '(SINHA)Society', 'for', 'Humanities', '(SHUM)Sociology', '(SOC)Soil', '&', 'Crop', 'Sciences', '(PLSCS)Spanish', '(SPAN)Statistical', 'Science', '(STSCI)Swahili', '(SWAHL)Swedish', '(SWED)Systems', 'Engineering', '(SYSEN)Tagalog', '(TAG)Tamil', '(TAMIL)Thai', '(THAI)Tibetan', '(TIBET)Toxicology', '(TOX)Turkish', '(TURK)Twi', '(TWI)Ukrainian', '(UKRAN)Urdu', '(URDU)Vet', 'Med', 'BioMedical', 'Sciences', '(VTBMS)Vet', 'Med', 'Clinical', 'Sciences', '(VETCS)Vet', 'Med', 'Microbiology', '(VETMI)Vet', 'Med', 'Prof', 'Curriculum', '(VTMED)Vet', 'Med', 'Public', '&', 'Ecosys', 'Health', '(VTPEH)Vietnamese', '(VIET)Visual', 'Studies', '(VISST)Viticulture', 'and', 'Enology', '(VIEN)Wolof', '(WOLOF)Writing', 'Program', '(WRIT)Yiddish', '(YIDSH)Yoruba', '(YORUB)Zulu', '(ZULU)']
+  subjects = []
+  for d in data:
+    if d[0] == '(':
+      for i in range(1, len(d)):
+        if d[i] == ')':
+          subjects.append(d[1:i])
+          break
+  subjects.sort()
+  
+  url_base = 'https://classes.cornell.edu/browse/roster/SP24/subject/'
 
+  urls = [url_base] * len(subjects)
+  for i in range(len(subjects)):
+    urls[i] = url_base + subjects[i]
+
+  # print(urls)
+  tokens = []
+  for url in urls:
+    try:
+      course = url[-3:]
+      print(course)
+      page = urlopen(url)
+      html = page.read().decode("utf-8")
+      soup = BeautifulSoup(html, "html.parser")
+
+      s = soup.get_text().replace('\n', ' ').split(' ')
+
+      res = []
+      for token in s:
+        if token != '':
+          res.append(token)
+
+      for i in range(len(res)):
+        if res[i] == course and int(res[i+1][:4]) > 0:
+          t = [course, res[i+1][:4]]
+          if not t in tokens:
+            tokens.append(t)
+    except:
+      pass
+
+  return tokens
+
+def get_2024_descriptions():
+  print('Getting Course Names...')
+  names = get_2024_courses()
+  print('Finished Retrieving Course Names')
+
+
+  url_base = 'https://classes.cornell.edu/browse/roster/SP24/class/'
+
+  print('Getting course descriptions')
+  with open('2024coursedata.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+     
+    writer.writerow([""])
+
+    i = 0
+    for name in names:
+      # if i < 10:
+      print('Class: ' + name[0] + name[1] + ', Iteration: ' + str(i))
+      url = url_base + name[0] + '/' + name[1]
+
+      tokens = scrape_site(url)
+      if tokens is not None:
+        writer.writerow(tokens)
+      i += 1
+
+
+def model():
+  X = []
+  y = []
+  with open('stringcourse.csv', newline='') as csvfile:
+    csvreader = csv.reader(csvfile)
+
+    header = next(csvreader)
+
+    for row in csvreader:
+      row = row[0]
+
+      sp1 = row.index(' ')
+      sp2 = row[sp1 + 1:].index(' ') + sp1 + 1
+      sp3 = row[sp2 + 1:].index(' ') + sp2 + 1
+
+      dep = row[sp1+1:sp2]
+      num = row[sp2+1:sp3]
+      y.append(dep + num)
+      X.append(row[sp3 + 1:])
+    
+    X = np.array(X)
+    tfidf_vectorizer = TfidfVectorizer()
+    X = tfidf_vectorizer.fit_transform((X))
+
+    # X = cosine_similarity(X)
+
+    n_neighbors = 5
+
+    # print(user_tfidf)
+    KNN = NearestNeighbors(n_neighbors=n_neighbors, p=2)
+    KNN.fit(X)
+
+    def validate():
+      xTe = []
+      yTe = []
+      with open('Duke Roster.csv', newline='') as csvfile:
+
+        # read in course data
+        csvreader = csv.reader(csvfile)
+        header = next(csvreader)
+
+        for row in csvreader:
+          if row[0] != '':
+            xTe.append(row[2])
+            yTe.append(row[4])
+
+      xTe = np.array(xTe)
+      return xTe, yTe
+
+    xTe, yTe = validate()
+
+    xTe = tfidf_vectorizer.fit_transform((xTe))
+
+    print(X.shape)
+    print(xTe.shape)
+    NNs = KNN.kneighbors(xTe, return_distance=True)
+    print(NNs)
+    # print(xTe)
+    # print(yTe)
+
+    score = 0
+    total = 0
+
+
+
+model()
+
+# get_2024_descriptions()
+# get_2024_data()
 #url = 'https://classes.cornell.edu/browse/roster/FA23/class/CS/4701'
 #url = 'http://olympus.realpython.org/profiles/aphrodite'
 #url = 'https://classes.cornell.edu/browse/roster/FA23/class/PHIL/2540'
@@ -191,7 +332,4 @@ def string_data(filename):
 # get_data()
 
 #filter_data('coursedata.csv')
-string_data('filtercourse.csv')
-
-
-
+#string_data('filtercourse.csv')
