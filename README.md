@@ -13,7 +13,7 @@ In this repo, we have 5 models.
 
 (1) knn.py contains a KNN classifier which returns the top 5 courses
 (2) knn2.py contains a KNN classifier which returns a ranked order of recommended
-courses (all 1954)
+courses (all 1954). This uses the sklearn Nearest Neighbors library.
 
 Both of these KNN models tokenize our inputs using TF-IDF. We then apply
 cosine similarity as our distance metric to determine which descriptions
