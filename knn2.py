@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import csv
 from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics.pairwise import cosine_similarity, euclidean_distances
 from sklearn.neighbors import NearestNeighbors
 
 def prep():
@@ -43,13 +43,13 @@ filtered = prep()
 xTe, yTe = validate()
 vectorizer = TfidfVectorizer()
 trainset_tfidf = vectorizer.fit_transform((filtered['text']))
-n_neighbors = 5
+n_neighbors = 1954
 
 def knn_top_matches(filtered, test):
     input_vector = vectorizer.transform([test])
 
     # Using NearestNeighbors for k-NN search
-    KNN = NearestNeighbors(n_neighbors, metric='cosine')
+    KNN = NearestNeighbors(n_neighbors, metric='euclidean')
     KNN.fit(trainset_tfidf)
 
     # Finding k-nearest neighbors
@@ -57,7 +57,7 @@ def knn_top_matches(filtered, test):
 
     titles = filtered['title'].values 
 
-    similarities = cosine_similarity(input_vector, trainset_tfidf[top_indices.flatten()]).flatten()
+    similarities = euclidean_distances(input_vector, trainset_tfidf[top_indices.flatten()]).flatten()
 
     top_matches = [(titles[i], similarities[j]) for j, i in enumerate(top_indices.flatten())]
     top_matches.sort(key=lambda x: x[1], reverse=True)
@@ -74,6 +74,8 @@ for index, row in res.iterrows():
     similarities = []
 
     top_matches = knn_top_matches(filtered, row['Duke Description'])
+
+    # print(top_matches)
 
     for m, similarity in top_matches:
         top_results.append(m)
