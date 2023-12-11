@@ -8,6 +8,8 @@ from transformers import TrainingArguments, Trainer
 from transformers import EvalPrediction
 import torch
 
+# Took inspiration from https://colab.research.google.com/github/NielsRogge/Transformers-Tutorials/blob/master/BERT/Fine_tuning_BERT_(and_friends)_for_multi_label_text_classification.ipynb#scrollTo=797b2WHJqUgZ
+
 # Returns a list of Duke Class corresponding Cornell Class label
 def get_labels(cornell_df, duke_df):
     res = np.zeros(34)
