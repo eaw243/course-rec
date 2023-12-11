@@ -18,11 +18,6 @@ def get_labels(cornell_df, duke_df):
       res[i]= cornell_df[cornell_df['title'] == row]['ID'].values.item()
       i=i+1
     return res
-# Make a mapping in each direction from id <=> label
-def make_mapping(labels):
-  iToL = {id:label for id, label in enumerate(labels)}
-  lToI = {label:id for id, label in enumerate(labels)}
-  return iToL, lToI
 
 # Prepare a dataframe of Cornell data
 def prep():
@@ -71,8 +66,6 @@ eval_ds =  Dataset.from_dict({"inputs": new_texts, "labels": duke_labels})
 encoded_train_ds = train_ds.map(get_embeddings, batched=True, remove_columns=train_ds.column_names)
 # Tokenize the testing dataset
 encoded_eval_ds = eval_ds.map(get_embeddings, batched=True, remove_columns=eval_ds.column_names)
-# Create our mapping from id <=> label
-iToL, lToI = make_mapping(labels)
 # Instantiate our bert model
 model = DistilBertForSequenceClassification.from_pretrained("bert-base-uncased",
 # Put the model on the GPU                                                      num_labels=len(labels))
