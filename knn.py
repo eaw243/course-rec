@@ -82,3 +82,15 @@ res['Similarities'] = sims
 csv_file_path = './knn.csv'
 # Make this a csv
 res.to_csv(csv_file_path, index=False)
+
+
+# res = pd.read_csv('./Duke Roster.csv',  sep=',',  header=0)
+# data = []
+# y = []
+# for row in res:
+#   if row[0] != '':
+#     data.append(row[1])
+#     y.append(row[0])
+
+# print(data)
+# print(y)

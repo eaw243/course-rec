@@ -1,152 +1,52 @@
-﻿Cornell Class Code,Description,,,,,,,,,,
-PMA 2800,"A beginning acting class, class activities included exercises to help us get used to performing in front of an audience, memorization, diction and enunciation, getting more comfortable with ourselves.",,,,,,,,,,
-ILRLR 4820,"Advanced discussion based course covering different philosophers and their varying ethical theories, and applying these theories to contemporary issues to deepen understanding",,,,,,,,,,
-PMA 2300,A beginner's dance class introducing students to basic elements of choreography and movement through creating and presenting group and solo compositions,,,,,,,,,,
-STSCI 5010,"An introduction to SAS programming, with the opportunity to take the Base SAS Certification Exam at the end of the semester.",,,,,,,,,,
-CHEM 3580,"The second semester of organic chemistry that requires a strong understanding of concepts from the previous course, but is much more demanding on the memorization aspect of chemistry. Many reactions and molecules must be known and a good sense of chemical intuition is necessary for success is this class.",,,,,,,,,,
-BIOMG 2801,"A biological lab course covering basic genetics lab techniques, with topics including mutagenesis using CRISPR/Cas9, cloning, and mapping",,,,,,,,,,
-MATH 2210,"An introduction to linear algebra covering matrices, vectors, eigenvectors, subspaces, and vector spaces",,,,,,,,,,
-PSYCH 3310,"An in-depth course that covers major disorders in children (depression, ADHS, ASD, OCD, ODD, etc.) along with different interventions and treatments that are being used.",,,,,,,,,,
-ENGL1170,A basic intro course where you engage with and analyze short stories and discuss it with classmates.,,,,,,,,,,
-CLASS 2604,A course covering Green stories revolving around characters like Percy Jackson with an emphasis on class discussion and comparisons throughout Greek history to the present day,,,,,,,,,,
-PHYS 2207,"An introductory physics course on mechanics, covering kinematics, statics, dynamics, energy, fluids, waves and oscillations, containing a minimal amount of calculus and taught in a flipped style",,,,,,,,,,
-ASIAN 2208,"An introductory class that briefly explores a diverse range of topics about Southeast Asia, including religion, history, music, labor relations, anthropology, economics, politics, food, film, and literature",,,,,,,,,,
-ENGRI 1101,"A beginner’s course on algorithms to solve operations research problems with real world applications, helps to develop critical thinking skills outside of the field.",,,,,,,,,,
-PLBIO 2400,"A beginner’s course about how public policies, human lifestyles, and scientific topics are connected in order to fight global warming",,,,,,,,,,
-CS 4670,"An upper-level CS course that covers the fundamental concepts of Computer Vision such as objection recognition, edge detection, line detection, and 3D image reconstruction",,,,,,,,,,
-GOVT 2274,"A course covering various aspects of global politics with a different module each week, ranging from the emergence of social movements to climate change. Frequent guest lecturers and opportunities to explore one's own areas of interest on a deeper level.",,,,,,,,,,
-NS 2470,A beginner friendly cooking class that teaches you the basics about nutritional science and meal planning.,,,,,,,,,,
-BIOMG 2801,"A genetics lab course where you can use CRISPR to mutate drosophila, a model organism, and analyze these mutations using modern bioinformatics technology.",,,,,,,,,,
-STSCI 2150,An introductory statistics course focusing on topics applicable to biology and life sciences and provides an introduction to using R Studio,,,,,,,,,,
-HIST 1951,Intro class going over CIA intervention in Latin America and South east Asia,,,,,,,,,,
-PMA 2800,"A beginning acting course that focuses on several exciting plays and historical acting methodologies. It combines group games and activities with monologue learning, collaboration and ensemble work, and physical acting. Great for building confidence and having fun!",,,,,,,,,,
-BIONB 3920,"Drugs and the brain is a phenomenal class with about 30 students. Lectures meet twice a week for 75 minutes each. Each lecture covers a different topic including opioids, addiction, cannabis, cocaine, etc, starting with an introduction to the history of each drug, some anecdotal stories from people who have used or been addicted to the drug, and then a deep dive into the studies performed to understand the neurobiology of these substances. There are 2 in class exams that aren't cumulative, and one research paper analysis every 2 weeks for which you will present in the once weekly discussion.",,,,,,,,,,
-BIONB 3920,An advanced course covering how drugs affect the brain,,,,,,,,,,
-BIOEE 1610,"This was a nice introductory course on ecology and the environment. The workload was very minimal, the lectures were fun to attend and very engaging/interactive, and same with the discussion sections, which were very focused on applications of the material, covering current climate issues, food chains/game theory, and we even went on field trips",,,,,,,,,,
-HIST 2860,An introductory course on the French Revolution. It covers everything from the quiet times of Louis XIV to the Storming of the Bastille and the tumultous period during the Terror as well as an introduction to the Napoleonic period.,,,,,,,,,,
-CS 4820,"An introductory course in the analysis of algorithms, covering topics such as dynamic programming, NP-completeness, and randomized algorithms.",,,,,,,,,,
-CS 1110,"The introductory computer science course, which is taught in Python. It covers basic concepts in programming.",,,,,,,,,,
-EAS1101,"An intro course to the history of life on earth. From a lifeless earth to one filled with life. Covers a number of topics: from climatic change, geology, plant and animal life over a period of 4.5 billion years and contemporary environment",,,,,,,,,,
-CS2110,Advanced programming course in object oriented and data structures.,,,,,,,,,,
-CS 1110,A introductory course on software development using python,,,,,,,,,,
-BIOMS 4150,"A beginner’s course in Immunology teaching how the immune system responds to microbes, the types of immunity and how the body builds immunity",,,,,,,,,,
-CS 6850,Discussion of social phenomenon through graph models,,,,,,,,,,
-CS 6810,Overview of complexity classes and their relationships,,,,,,,,,,
-CS 4620,"A course on computer graphics with topics such as ray tracing, texture mapping, transformations, and others.",,,,,,,,,,
-MATH 4220,An introductory course to complex analysis. A large emphasis on complex integration and Cauchy's residue theorem.,,,,,,,,,,
-CS 4700,"An artificial intelligence course that covers the ethics of AI, search algorithms, and machine learning.",,,,,,,,,,
-STSCI 3090,"A statistical Science elective for theory of interest (actuarial science) assuming basic calculus background, no finance background necessary.",,,,,,,,,,
-EAS 1101,"A beginner's course covering climate change, energy sources, and the challenges we encounter in addressing current environmental issues",,,,,,,,,,
-AEM 2241,"Intro finance class for non-Dyson students with no prior knowledge on the topic, accounting is a prereq (but tbh not necessary at all, I didn’t take it beforehand).",,,,,,,,,,
-CS 4787,"Machine Learning course that focuses on stochastic gradient descent (SGD) and the optimization behind it. Course also covers hard ware optimization for training large scale models. Transformer architecture, gaussian process, and neural networks are also covered. Builds on 4780.",,,,,,,,,,
-CS 4820,"Algorithms course that covers dynamic programming, greedy algorithms, approximation algorithms, randomized algorithms as well as turing machines and NP-completeness. Focus on proof writing to verify correctness and runtime of algorithms.",,,,,,,,,,
-MATH 4710,"Basic probability course that covers combinatorics, probability density function, cumulative density function, random variables, indicator variables and other techniques for solving probability problems.",,,,,,,,,,
-MUSIC 2244,"A mid-level music course focused on the technology, music, and social place of the organ throughout history and in the modern day.",,,,,,,,,,
-ENTOM 2100,"An introductory course covering infectious diseases that have impacted human populations, intersecting the fields of biology, art, history, and more",,,,,,,,,,
-ASTRO 1101,"An introductory course to astronomy, teaching why the night sky appears the way it does, about planets and how they differ, and much more.",,,,,,,,,,
-SOC 2370,"An intermediate course on how public policy can be used to solve and improve social inequalities and problems, such as racism.",,,,,,,,,,
-BSOC 2051,"An introductory course covering a multitude of ethical challenges pertinent to modern healthcare, such as public health challenges, the use of technology in medicine, abortion, and end-of-life decisions, to name a few.",,,,,,,,,,
-ECON 3720,A course about the economics of the health care system. Goes over how inflation has impacted the health care prices and the health care system over all.,,,,,,,,,,
-BIOMI 2950,"A course focusing on infectious disease biology, discussing both broad biological concepts and specific diseases that impact humans, animals, and plants. The class is centered around strengthening critical reading and comprehension of primary scientific literature.",,,,,,,,,,
-PSYCH 2750,An introductory course on the psychology of personality. Some topics include contemporary theory and debates in psychology.,,,,,,,,,,
-PHIL 2455,A course focusing on ethical dilemmas in the healthcare field through the lens of traditional philosophical principles and theories.,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
-,,,,,,,,,,,
+﻿Cornell Class Code,Description
+PMA 2800,"A beginning acting class, class activities included exercises to help us get used to performing in front of an audience, memorization, diction and enunciation, getting more comfortable with ourselves."
+ILRLR 4820,"Advanced discussion based course covering different philosophers and their varying ethical theories, and applying these theories to contemporary issues to deepen understanding"
+PMA 2300,A beginner's dance class introducing students to basic elements of choreography and movement through creating and presenting group and solo compositions
+STSCI 5010,"An introduction to SAS programming, with the opportunity to take the Base SAS Certification Exam at the end of the semester."
+CHEM 3580,"The second semester of organic chemistry that requires a strong understanding of concepts from the previous course, but is much more demanding on the memorization aspect of chemistry. Many reactions and molecules must be known and a good sense of chemical intuition is necessary for success is this class."
+BIOMG 2801,"A biological lab course covering basic genetics lab techniques, with topics including mutagenesis using CRISPR/Cas9, cloning, and mapping"
+MATH 2210,"An introduction to linear algebra covering matrices, vectors, eigenvectors, subspaces, and vector spaces"
+PSYCH 3310,"An in-depth course that covers major disorders in children (depression, ADHS, ASD, OCD, ODD, etc.) along with different interventions and treatments that are being used."
+ENGL1170,A basic intro course where you engage with and analyze short stories and discuss it with classmates.
+CLASS 2604,A course covering Green stories revolving around characters like Percy Jackson with an emphasis on class discussion and comparisons throughout Greek history to the present day
+PHYS 2207,"An introductory physics course on mechanics, covering kinematics, statics, dynamics, energy, fluids, waves and oscillations, containing a minimal amount of calculus and taught in a flipped style"
+ASIAN 2208,"An introductory class that briefly explores a diverse range of topics about Southeast Asia, including religion, history, music, labor relations, anthropology, economics, politics, food, film, and literature"
+ENGRI 1101,"A beginner’s course on algorithms to solve operations research problems with real world applications, helps to develop critical thinking skills outside of the field."
+PLBIO 2400,"A beginner’s course about how public policies, human lifestyles, and scientific topics are connected in order to fight global warming"
+CS 4670,"An upper-level CS course that covers the fundamental concepts of Computer Vision such as objection recognition, edge detection, line detection, and 3D image reconstruction"
+GOVT 2274,"A course covering various aspects of global politics with a different module each week, ranging from the emergence of social movements to climate change. Frequent guest lecturers and opportunities to explore one's own areas of interest on a deeper level."
+NS 2470,A beginner friendly cooking class that teaches you the basics about nutritional science and meal planning.
+BIOMG 2801,"A genetics lab course where you can use CRISPR to mutate drosophila, a model organism, and analyze these mutations using modern bioinformatics technology."
+STSCI 2150,An introductory statistics course focusing on topics applicable to biology and life sciences and provides an introduction to using R Studio
+HIST 1951,Intro class going over CIA intervention in Latin America and South east Asia
+PMA 2800,"A beginning acting course that focuses on several exciting plays and historical acting methodologies. It combines group games and activities with monologue learning, collaboration and ensemble work, and physical acting. Great for building confidence and having fun!"
+BIONB 3920,"Drugs and the brain is a phenomenal class with about 30 students. Lectures meet twice a week for 75 minutes each. Each lecture covers a different topic including opioids, addiction, cannabis, cocaine, etc, starting with an introduction to the history of each drug, some anecdotal stories from people who have used or been addicted to the drug, and then a deep dive into the studies performed to understand the neurobiology of these substances. There are 2 in class exams that aren't cumulative, and one research paper analysis every 2 weeks for which you will present in the once weekly discussion."
+BIONB 3920,An advanced course covering how drugs affect the brain
+BIOEE 1610,"This was a nice introductory course on ecology and the environment. The workload was very minimal, the lectures were fun to attend and very engaging/interactive, and same with the discussion sections, which were very focused on applications of the material, covering current climate issues, food chains/game theory, and we even went on field trips"
+HIST 2860,An introductory course on the French Revolution. It covers everything from the quiet times of Louis XIV to the Storming of the Bastille and the tumultous period during the Terror as well as an introduction to the Napoleonic period.
+CS 4820,"An introductory course in the analysis of algorithms, covering topics such as dynamic programming, NP-completeness, and randomized algorithms."
+CS 1110,"The introductory computer science course, which is taught in Python. It covers basic concepts in programming."
+EAS1101,"An intro course to the history of life on earth. From a lifeless earth to one filled with life. Covers a number of topics: from climatic change, geology, plant and animal life over a period of 4.5 billion years and contemporary environment"
+CS2110,Advanced programming course in object oriented and data structures.
+CS 1110,A introductory course on software development using python
+BIOMS 4150,"A beginner’s course in Immunology teaching how the immune system responds to microbes, the types of immunity and how the body builds immunity"
+CS 6850,Discussion of social phenomenon through graph models
+CS 6810,Overview of complexity classes and their relationships
+CS 4620,"A course on computer graphics with topics such as ray tracing, texture mapping, transformations, and others."
+MATH 4220,An introductory course to complex analysis. A large emphasis on complex integration and Cauchy's residue theorem.
+CS 4700,"An artificial intelligence course that covers the ethics of AI, search algorithms, and machine learning."
+STSCI 3090,"A statistical Science elective for theory of interest (actuarial science) assuming basic calculus background, no finance background necessary."
+EAS 1101,"A beginner's course covering climate change, energy sources, and the challenges we encounter in addressing current environmental issues"
+AEM 2241,"Intro finance class for non-Dyson students with no prior knowledge on the topic, accounting is a prereq (but tbh not necessary at all, I didn’t take it beforehand)."
+CS 4787,"Machine Learning course that focuses on stochastic gradient descent (SGD) and the optimization behind it. Course also covers hard ware optimization for training large scale models. Transformer architecture, gaussian process, and neural networks are also covered. Builds on 4780."
+CS 4820,"Algorithms course that covers dynamic programming, greedy algorithms, approximation algorithms, randomized algorithms as well as turing machines and NP-completeness. Focus on proof writing to verify correctness and runtime of algorithms."
+MATH 4710,"Basic probability course that covers combinatorics, probability density function, cumulative density function, random variables, indicator variables and other techniques for solving probability problems."
+MUSIC 2244,"A mid-level music course focused on the technology, music, and social place of the organ throughout history and in the modern day."
+ENTOM 2100,"An introductory course covering infectious diseases that have impacted human populations, intersecting the fields of biology, art, history, and more"
+ASTRO 1101,"An introductory course to astronomy, teaching why the night sky appears the way it does, about planets and how they differ, and much more."
+SOC 2370,"An intermediate course on how public policy can be used to solve and improve social inequalities and problems, such as racism."
+BSOC 2051,"An introductory course covering a multitude of ethical challenges pertinent to modern healthcare, such as public health challenges, the use of technology in medicine, abortion, and end-of-life decisions, to name a few."
+ECON 3720,A course about the economics of the health care system. Goes over how inflation has impacted the health care prices and the health care system over all.
+BIOMI 2950,"A course focusing on infectious disease biology, discussing both broad biological concepts and specific diseases that impact humans, animals, and plants. The class is centered around strengthening critical reading and comprehension of primary scientific literature."
+PSYCH 2750,An introductory course on the psychology of personality. Some topics include contemporary theory and debates in psychology.
+PHIL 2455,A course focusing on ethical dilemmas in the healthcare field through the lens of traditional philosophical principles and theories.
